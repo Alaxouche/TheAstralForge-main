@@ -1,0 +1,28 @@
+---
+layout: null
+sitemap: false
+---
+{
+  "name": "The Astral Forge",
+  "short_name": "Astral Forge",
+  "description": "Documentation for The Astral Forge modlists.",
+  "start_url": "{{ '/' | relative_url }}",
+  "scope": "{{ '/' | relative_url }}",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "{{ '/assets/logos/theastralforge.png' | relative_url }}",
+      "sizes": "1000x1000",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ '/assets/logos/theastralforge.png' | relative_url }}",
+      "sizes": "1000x1000",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{% comment %}
+  components/loadorder_embed.html
+  Wraps the Load Order Library iframe with a toolbar: open in a new tab and a
+  fullscreen toggle. Degrades gracefully if iframes or JS are unavailable.
+  Params: include.src (required), include.title (required).
+{% endcomment %}
+<div class="lo-embed" data-loadorder>
+  <div class="lo-embed__bar">
+    <span class="lo-embed__title">{{ include.title }}</span>
+    <div class="lo-embed__actions">
+      <button type="button" class="lo-embed__btn" data-lo-fullscreen aria-label="Toggle fullscreen">⛶ Fullscreen</button>
+      <a class="lo-embed__btn" href="{{ include.src }}" target="_blank" rel="noopener noreferrer">↗ Open in new tab</a>
+    </div>
+  </div>
+  <iframe class="lo-embed__frame"
+          src="{{ include.src }}"
+          title="{{ include.title }}"
+          loading="lazy"
+          width="100%" height="800"
+          frameborder="0">
+    Your browser does not support iframes.
+    <a href="{{ include.src }}" target="_blank" rel="noopener noreferrer">View the mod list directly</a>.
+  </iframe>
+</div>

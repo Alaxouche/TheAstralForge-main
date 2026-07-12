@@ -1,0 +1,70 @@
+- id: compass-undiscovered
+  question: "My compass doesn't show undiscovered locations!"
+  answer: "Open Compass Navigation Overhaul and set `bShowUndiscoveredLocationMarkers=1`."
+  tags:
+    - Gameplay
+    - UI
+- id: main-quest-start
+  question: "How do I start the main quest in this list?"
+  answer: |
+    Head to Helgen's Inn and talk to the innkeeper. Choose the extra dialog option:
+    
+    - "I'd like to rent a room. (Start Intro (10 gold))"
+    
+    The first sleep is normal; the next time you sleep there, the intro will begin.
+  tags:
+    - Quests
+    - Gameplay
+- id: keep-load-order
+  question: "When I exit the game, a popup asks to keep load order changes. What should I do?"
+  answer: "Click **No**. Letting the game sort plugins can break the load order."
+  tags:
+    - Mod Organizer
+    - Load Order
+- id: dismount-horse
+  question: "How do I dismount my horse?"
+  answer: "Hold **E**."
+  tags:
+    - Gameplay
+- id: target-lock
+  question: "How do I use target lock?"
+  answer: "Target lock comes from True Directional Movement. Change the hotkey in the TDM MCM."
+  tags:
+    - Gameplay
+    - Controls
+- id: purple-map
+  question: "My map is all purple!"
+  answer: "You have mods loaded under your map plugins. Move any additional ESPs above your map ESPs."
+  tags:
+    - Troubleshooting
+    - Load Order
+- id: update-modlist
+  question: "How do I update my Wunduniik modlist?"
+  answer: |
+    Updating is similar to a first install:
+    
+    - Keep your existing download folder to reuse unchanged files.
+    - Download the new Wabbajack file and extract it.
+    - Open Wabbajack, select the `Wunduniik.wabbajack` file, and choose **Overwrite location**.
+    - Click **Start**.
+    
+    Note: Mods you added manually will be removed unless you rename them with the `[NoDelete]` prefix.
+  tags:
+    - Installation
+    - Updates
+- id: nsfw-options
+  question: "How do I activate the NSFW options?"
+  answer: "Wunduniik no longer includes NSFW. There is an optional Bodyslide folder with nude bodies in the optional mods separator."
+  tags:
+    - Optional Mods
+- id: widescreen-support
+  question: "How do I add widescreen support?"
+  answer: "Widescreen support is automatic. The mod manager detects your ratio and enables it for you."
+  tags:
+    - Display
+- id: change-preset
+  question: "I don't like the current character preset. How do I change it?"
+  answer: "Press **O** to open Obody, pick a preset from the list, and it will swap your body morph."
+  tags:
+    - Gameplay
+    - Character

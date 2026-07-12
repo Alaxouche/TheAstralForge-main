@@ -1,0 +1,31 @@
+- id: install-speed
+  question: "Pourquoi Wabbajack prend-il autant de temps ?"
+  answer: "Les téléchargements sont volumineux et dépendent de la vitesse de Nexus et des hébergeurs. Installez sur un SSD, évitez les heures de pointe et vérifiez que vous avez suffisamment d'espace disque."
+  tags:
+    - Installation
+    - Wabbajack
+
+- id: crashes-intro
+  question: "Le jeu plante pendant l'intro, est-ce normal ?"
+  answer: "Certaines listes peuvent être instables lors de l'intro scriptée. Réessayez après la séquence d'intro ou redémarrez le jeu une fois."
+  tags:
+    - Stabilité
+    - Dépannage
+
+- id: loadorder
+  question: "Où puis-je trouver l'ordre de chargement ?"
+  answer: "Chaque projet dispose d'une page d'ordre de chargement dans ses liens rapides. Vous pouvez aussi utiliser la barre de recherche pour la trouver rapidement."
+  tags:
+    - Documentation
+
+- id: reporting-bugs
+  question: "Comment signaler un bug ?"
+  answer: "Utilisez le canal de support Discord et incluez les logs, les étapes pour reproduire le problème et vos caractéristiques système."
+  tags:
+    - Support
+
+- id: update-frequency
+  question: "À quelle fréquence les modlistes sont-elles mises à jour ?"
+  answer: "Les mises à jour sont publiées dans chaque journal de modifications. La fréquence dépend des mises à jour du jeu et des mods."
+  tags:
+    - Changelog

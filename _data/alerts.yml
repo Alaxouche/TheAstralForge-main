@@ -1,0 +1,7 @@
+- id: maintenance-2026-02-12
+  enabled: false
+  type: maintenance  # Types: maintenance, alert, info
+  label: Maintenance
+  message: "Maintenance in progress - some pages may be unstable."
+  link_text: "Details"
+  link_url: "/changelog-timeline-example/"

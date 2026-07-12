@@ -1,0 +1,30 @@
+{% comment %}
+  Children navigation component that displays child pages for the current page.
+  This component shows a list of child pages when the page has_children: true
+  and there are actual child pages to display.
+  
+  Usage:
+    {% include components/children_nav.html toc_list=toc_list %}
+    
+  Parameters:
+    - toc_list: List of child pages (computed in nav.html)
+{% endcomment %}
+
+{% if include.toc_list and include.toc_list.size > 0 %}
+<hr>
+<nav aria-label="Child pages" class="child-nav">
+  <h2 class="text-delta">Table of contents</h2>
+  <ul class="child-nav-list">
+    {% for child in include.toc_list %}
+      {% unless child.nav_exclude %}
+        <li class="child-nav-list-item">
+          <a href="{{ child.url | relative_url }}" class="child-nav-list-link">{{ child.title }}</a>
+          {% if child.summary %}
+            <p class="child-nav-list-summary">{{ child.summary }}</p>
+          {% endif %}
+        </li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

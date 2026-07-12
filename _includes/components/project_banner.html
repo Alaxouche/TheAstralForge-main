@@ -1,0 +1,42 @@
+{% if page.project_banner %}
+  <section class="project-banner" aria-label="{{ page.project_banner.title | default: page.title }} — {{ page.project_banner.eyebrow | default: 'Project overview' }}" style="--banner-image: url('{{ page.project_banner.image | relative_url }}'); --banner-accent: {{ page.project_banner.accent | default: '#22c55e' }};">
+    <div class="project-banner__inner">
+      <div class="project-banner__text">
+        <p class="project-banner__eyebrow">{{ page.project_banner.eyebrow | default: "Project overview" }}</p>
+        <h2 class="project-banner__title">{{ page.project_banner.title | default: page.title }}</h2>
+        {% if page.project_banner.subtitle %}
+          <p class="project-banner__subtitle">{{ page.project_banner.subtitle }}</p>
+        {% endif %}
+        {% if page.modlist_id %}
+          <div
+            class="project-banner__stats"
+            data-stats-modlist="{{ page.modlist_id }}"
+            {% if page.modlist_source %}data-stats-source="{{ page.modlist_source }}"{% endif %}
+            {% if page.modlist_title %}data-stats-title="{{ page.modlist_title }}"{% endif %}
+          >
+            {% if page.project_banner.stats %}
+              {% for stat in page.project_banner.stats %}
+                <div class="project-stat">
+                  <span class="project-stat__value">{{ stat.value }}</span>
+                  <span class="project-stat__label">{{ stat.label }}</span>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% elsif page.project_banner.stats %}
+          <div class="project-banner__stats">
+            {% for stat in page.project_banner.stats %}
+              <div class="project-stat">
+                <span class="project-stat__value">{{ stat.value }}</span>
+                <span class="project-stat__label">{{ stat.label }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if page.modlist_id %}
+          <p class="project-banner__live" data-i18n-key="banner.live">Live data</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}

@@ -1,0 +1,24 @@
+---
+# Combined Atom feed of the latest release of every modlist.
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>The Astral Forge — Releases</title>
+  <subtitle>Latest version of every Astral Forge modlist.</subtitle>
+  <link href="{{ '/releases.xml' | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ '/' | absolute_url }}"/>
+  <id>{{ '/releases.xml' | absolute_url }}</id>
+  {%- assign latest = site.data.modlist_snapshot | sort: 'dateUpdated' | last -%}
+  <updated>{{ latest.dateUpdated }}</updated>
+  {%- for m in site.data.modlist_snapshot %}
+  <entry>
+    <title>{{ m.title | xml_escape }} {{ m.version }}</title>
+    <id>tag:theastralforge.com,2026:{{ m.id }}:{{ m.version }}</id>
+    <updated>{{ m.dateUpdated }}</updated>
+    <link href="{{ '/' | append: m.id | append: '/' | absolute_url }}"/>
+    <summary>{{ m.title | xml_escape }} updated to version {{ m.version }}.</summary>
+  </entry>
+  {%- endfor %}
+</feed>

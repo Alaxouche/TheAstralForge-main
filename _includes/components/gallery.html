@@ -1,0 +1,34 @@
+{% comment %}
+  components/gallery.html
+  Renders a screenshot grid for a modlist when `page.gallery_path` is set in
+  front matter (e.g. gallery_path: "/assets/Images/Skyrim/"). Images are pulled
+  straight from site.static_files, so dropping new screenshots in the folder is
+  enough — no list to maintain. Clicking an image opens the existing lightbox.
+{% endcomment %}
+{% if page.gallery_path %}
+  {% assign gallery_files = site.static_files | where_exp: "f", "f.path contains page.gallery_path" | sort: "path" %}
+  {% assign gallery_count = 0 %}
+  {% for f in gallery_files %}
+    {% if f.extname == ".webp" or f.extname == ".jpg" or f.extname == ".jpeg" or f.extname == ".png" %}
+      {% assign gallery_count = gallery_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if gallery_count > 0 %}
+    <section class="modlist-gallery" aria-label="Screenshots">
+      <h2 class="modlist-gallery__title" data-i18n-key="gallery.title">Gallery</h2>
+      <p class="modlist-gallery__subtitle" data-i18n-key="gallery.subtitle">Screenshots from this modlist.</p>
+      <div class="modlist-gallery__grid">
+        {% for f in gallery_files %}
+          {% if f.extname == ".webp" or f.extname == ".jpg" or f.extname == ".jpeg" or f.extname == ".png" %}
+            <figure class="modlist-gallery__item">
+              <img src="{{ f.path | relative_url }}"
+                   alt="{{ page.title }} screenshot"
+                   loading="lazy"
+                   decoding="async">
+            </figure>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,14 @@
+{% comment %}
+  install_checklist.html
+  Per-step "mark as complete" control on installation guide pages. State is
+  saved in localStorage by install-checklist.js (keyed by page URL), and the
+  stepper pills reflect completed steps on load.
+{% endcomment %}
+{% if page.parent == "Installation Guide" %}
+  <div class="install-checklist" data-step-url="{{ page.url | relative_url }}">
+    <label class="install-checklist__toggle">
+      <input type="checkbox" class="install-checklist__checkbox">
+      <span class="install-checklist__label" data-i18n-key="checklist.mark_done">Mark this step as complete</span>
+    </label>
+  </div>
+{% endif %}

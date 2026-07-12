@@ -1,0 +1,52 @@
+<nav class="readme-nav" aria-label="Navigation">
+<style>.readme-nav .nav-list-item > .nav-list{display:none!important}.readme-nav .nav-list-item.active > .nav-list{display:block!important}</style>
+  {% assign pages_top_size = site.html_pages
+        | where_exp:"item", "item.title != nil"
+        | where_exp:"item", "item.parent == nil"
+        | where_exp:"item", "item.nav_exclude != true"
+        | size %}
+  {% if pages_top_size > 0 %}
+    {% include nav.html pages=site.html_pages key=nil %}
+  {% endif %}
+
+  {% if site.just_the_docs.collections %}
+    {% assign collections_size = site.just_the_docs.collections | size %}
+    {% for collection_entry in site.just_the_docs.collections %}
+      {% assign collection_key = collection_entry[0] %}
+      {% assign collection_value = collection_entry[1] %}
+      {% assign collection = site[collection_key] %}
+      {% if collection_value.nav_exclude != true %}
+        {% if collections_size > 1 or pages_top_size > 0 %}
+          {% if collection_value.nav_fold == true %}
+            <ul class="nav-list nav-category-list">
+              <li class="nav-list-item{% if page.collection == collection_key %} active{% endif %}">
+                {%- if collection.size > 0 -%}
+                <a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a>
+                {%- endif -%}
+                <a href="/{{ collection_key }}/" class="nav-category nav-category-link">{{ collection_value.name }}</a>
+                {% include nav.html pages=collection key=collection_key %}
+              </li>
+            </ul>
+          {% else %}
+            {% if collection_value.nav_hasparent == true %}
+              <ul class="nav-list">
+                <li class="nav-list-item{% if page.collection == collection_key %} active{% endif %}">
+                  {%- if collection.size > 0 -%}
+                  <a href="#" class="nav-list-expander"><svg viewBox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a>
+                  {%- endif -%}
+                  <a href="/{{ collection_key }}/" class="nav-list-link nav-collection-link">{{ collection_value.name }}</a>
+                  {% include nav.html pages=collection key=collection_key %}
+                </li>
+              </ul>
+            {% else %}
+              <a href="/{{ collection_key }}/" class="nav-category nav-category-link">{{ collection_value.name }}</a>
+              {% include nav.html pages=collection key=collection_key %}
+            {% endif %}
+          {% endif %}
+        {% else %}
+          {% include nav.html pages=collection key=collection_key %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</nav>

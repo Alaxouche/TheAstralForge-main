@@ -1,0 +1,116 @@
+benefits:
+  - Early access to previews and roadmap updates
+  - Priority support on Discord for installation and troubleshooting
+  - Your name listed as a supporter on the site
+  - Help decide future list improvements and features
+
+impact:
+  - Hardware and testing resources for stable builds
+  - Time for bug fixing, balancing, and compatibility checks
+  - Documentation, guides, and installation support
+  - Asset licensing and tooling for better visuals
+
+tiers:
+  - name: "Jarl"
+    amount: "$1.50 / month (+VAT)"
+    perks:
+      - Discord role and advantages
+      - Priority suggestions for mods
+      - Listed in the credits menu and pages
+      - Access to Discord
+  - name: "Dragon Priest"
+    amount: "$3 / month (+VAT)"
+    perks:
+      - Discord role and advantages
+      - Priority suggestions for mods
+      - Listed in the credits menu and pages
+      - Access to Discord
+  - name: "Greybeard"
+    amount: "$6 / month (+VAT)"
+    perks:
+      - Discord role and advantages
+      - Priority suggestions for mods
+      - Listed in the credits menu and pages
+      - Access to Discord
+  - name: "Daedric Prince"
+    amount: "$10 / month (+VAT)"
+    perks:
+      - Custom weapon named after you integrated into Wunduniik
+      - Discord role and advantages
+      - Listed in the credits menu and pages
+      - Priority suggestions for mods
+      - Access to Discord
+
+recent:
+  - name: "justin young"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2026-02-03"
+  - name: "Richie Rebolios"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2026-01-31"
+  - name: "Justin"
+    platform: "Patreon"
+    amount: "$10.00"
+    date: "2026-01-26"
+  - name: "ElPescado"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2026-01-26"
+  - name: "Frank Brackett"
+    platform: "Patreon"
+    amount: "$6.00"
+    date: "2026-01-24"
+  - name: "Bucki"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2026-01-20"
+  - name: "Smeagul"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2026-01-18"
+  - name: "Loiserich"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2026-01-17"
+  - name: "Frans Van Rooyen"
+    platform: "Patreon"
+    amount: "$6.00"
+    date: "2026-01-16"
+  - name: "fekk"
+    platform: "Patreon"
+    amount: "$1.50"
+    date: "2025-09-07"
+
+top:
+  - name: "Cuttermind"
+    platform: "Patreon"
+    total: "$130.00"
+  - name: "George Joanethis"
+    platform: "Patreon"
+    total: "$110.00"
+  - name: "Dakkon"
+    platform: "Patreon"
+    total: "$99.00"
+  - name: "justin young"
+    platform: "Patreon"
+    total: "$86.00"
+  - name: "Juan Flores"
+    platform: "Patreon"
+    total: "$80.00"
+  - name: "Laimis Rinkevicius"
+    platform: "Patreon"
+    total: "$75.56"
+  - name: "erwin gloeckler"
+    platform: "Patreon"
+    total: "$74.62"
+  - name: "Frankie G YT"
+    platform: "Patreon"
+    total: "$66.00"
+  - name: "Cathusiastic"
+    platform: "Patreon"
+    total: "$65.22"
+  - name: "Melissa dunning"
+    platform: "Patreon"
+    total: "$55.50"

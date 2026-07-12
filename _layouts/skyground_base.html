@@ -1,0 +1,131 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Anti-FOUC: apply stored or system theme before first paint -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('sg-theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
+          ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  {% seo %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/skyground/site.css' | relative_url }}?v={{ site.assets_version }}">
+  <style>
+    /* Theme transition */
+    html.theme-transitioning,
+    html.theme-transitioning *,
+    html.theme-transitioning *::before,
+    html.theme-transitioning *::after {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+    }
+    
+    /* Hero parallax layers */
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg-layer {
+      position: absolute;
+      inset: 0;
+      will-change: transform;
+      z-index: -1;
+    }
+    
+    .hero-content-wrapper {
+      position: relative;
+      z-index: 1;
+      will-change: opacity;
+    }
+    
+    /* Lazy load fade in */
+    img[data-src] {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    img.loaded {
+      opacity: 1;
+    }
+  </style>
+  {% if page.layout == 'skyground_hub' %}
+    <link rel="stylesheet" href="{{ '/assets/skyground/hub.css' | relative_url }}?v={{ site.assets_version }}">
+  {% endif %}
+  {% if page.layout == 'skyground_readme' %}
+    <link rel="stylesheet" href="{{ '/assets/skyground/wikimain.css' | relative_url }}?v={{ site.assets_version }}">
+  {% endif %}
+  <link rel="icon" type="image/x-icon" href="{{ site.favicon_ico | relative_url }}">
+  <link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="alternate" type="application/atom+xml" title="The Astral Forge — Releases" href="{{ '/releases.xml' | relative_url }}">
+  {% if page.modlist_id %}
+    <link rel="alternate" type="application/atom+xml" title="{{ page.title }} — Releases" href="{{ '/feeds/' | append: page.modlist_id | append: '.xml' | relative_url }}">
+  {% endif %}
+  {% if page.project_banner.image %}
+    <!-- Preload the project banner background (likely LCP element) -->
+    <link rel="preload" as="image" href="{{ page.project_banner.image | relative_url }}" fetchpriority="high">
+  {% endif %}
+  {% include head_custom.html %}
+</head>
+{% assign active_alert = site.data.alerts | where: "enabled", true | first %}
+<body{% if active_alert %} class="has-alert"{% endif %}>
+<!-- SVG sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <polyline points="9 18 15 12 9 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+  <div id="lightbox" aria-hidden="true">
+    <img id="lightbox-img" alt="">
+  </div>
+  <a class="skip-link" href="#main-content" data-i18n-key="nav.skip">Skip to content</a>
+  {% include skyground_header.html %}
+  <div id="main-content" tabindex="-1">
+  {{ content }}
+  </div>
+  {% include nav_footer_custom.html %}
+  
+  <button id="back-to-top" aria-label="Back to top">
+    ↑
+  </button>
+  <!-- Register the service worker for offline docs + asset caching (sw.js) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker
+          .register('{{ "/sw.js" | relative_url }}')
+          .catch(function (err) { console.warn('SW registration failed:', err); });
+      });
+    }
+  </script>
+  <script src="{{ '/assets/skyground/site.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  {% if page.layout == 'skyground_readme' %}
+  <script src="{{ '/assets/skyground/nav-fold.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  {% endif %}
+  {% if page.layout == 'skyground_readme' or page.layout == 'skyground_changelog' %}
+  <script src="{{ '/assets/skyground/stats-system.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  <script src="{{ '/assets/skyground/video-tutorials.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  <script src="{{ '/assets/skyground/social-share.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  <script src="{{ '/assets/skyground/install-checklist.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  <script src="{{ '/assets/skyground/version-banner.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  <script src="{{ '/assets/skyground/loadorder.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  {% endif %}
+  {% if page.layout == 'skyground_home' or page.community_gallery %}
+  <script src="{{ '/assets/skyground/community-gallery.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  {% endif %}
+  {% if page.layout == 'skyground_home' %}
+  <script src="{{ '/assets/skyground/discord-widget.js' | relative_url }}?v={{ site.assets_version }}" defer></script>
+  {% endif %}
+</body>
+</html>

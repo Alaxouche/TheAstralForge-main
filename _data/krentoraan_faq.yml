@@ -1,0 +1,39 @@
+- id: install-speed
+  question: "Why does Wabbajack take so long?"
+  answer: "Downloads are large and depend on Nexus/hosting speed. Install on SSD, avoid peak hours, and keep enough free disk space."
+  tags:
+    - Installation
+    - Wabbajack
+
+- id: crashes-intro
+  question: "I crash during the intro, is it normal?"
+  answer: "Some lists can be unstable during the scripted intro. Try again after the intro sequence or restart the game once."
+  tags:
+    - Stability
+    - Troubleshooting
+
+- id: performance-profiles
+  question: "Which performance profile should I use?"
+  answer: "Krentoraan's Profile Assistant selects the right profile automatically based on your VRAM and screen resolution at first MO2 launch. You can switch manually if needed."
+  tags:
+    - Performance
+    - Profiles
+
+- id: enb-change
+  question: "Can I change the ENB preset?"
+  answer: "Yes. Disable the active ENB preset in MO2, enable your preferred one, then clear Overwrite to regenerate the shader cache."
+  tags:
+    - ENB
+    - Post-Installation
+
+- id: reporting-bugs
+  question: "How should I report a bug?"
+  answer: "Use the Discord support channel and include logs, steps to reproduce, and your system specs. Crash logs are found at Documents/My Games/Skyrim Special Edition/SKSE/."
+  tags:
+    - Support
+
+- id: update-frequency
+  question: "How often is Krentoraan updated?"
+  answer: "Updates are posted in the changelog. Frequency depends on game patches and mod updates."
+  tags:
+    - Changelog

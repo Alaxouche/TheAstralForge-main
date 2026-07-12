@@ -1,0 +1,16 @@
+---
+# Global CSS bundle — concatenated by Jekyll at build time so every page
+# loads one stylesheet instead of seven. Page-specific sheets (hub.css,
+# wikimain.css, consent.css) stay separate. Keep the order identical to the
+# old <link> order in _layouts/skyground_base.html.
+# layout: null is required — the site-wide default layout would otherwise
+# wrap this file in HTML.
+layout: null
+---
+{% include_relative main.css %}
+{% include_relative lightbox.css %}
+{% include_relative features.css %}
+{% include_relative features-extended.css %}
+{% include_relative enhancements.css %}
+{% include_relative utilities.css %}
+{% include_relative visual-enhancements.css %}

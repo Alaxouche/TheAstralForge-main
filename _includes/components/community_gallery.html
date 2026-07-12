@@ -1,0 +1,39 @@
+{% comment %}
+  Community gallery grid, driven by _data/community_gallery.yml.
+  Params:
+    include.limit     max items to render (omit for all)
+    include.show_all  when true, adds a "view full gallery" link if items were cut
+{% endcomment %}
+{% assign cg_items = site.data.community_gallery.items %}
+{% if cg_items and cg_items.size > 0 %}
+  {% assign cg_modlists = cg_items | map: "modlist" | uniq %}
+  {% if cg_modlists.size > 1 %}
+  <div class="gallery-filters">
+    <button class="gallery-filter-btn active" data-filter="all" data-i18n-key="home.gallery_filter_all">All</button>
+    {% for m in cg_modlists %}
+      <button class="gallery-filter-btn" data-filter="{{ m }}">{{ m | replace: "-", " " | capitalize }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div id="user-gallery-container">
+    {% assign cg_limit = include.limit | default: cg_items.size %}
+    {% for item in cg_items limit: cg_limit %}
+    <div class="gallery-item" data-modlist="{{ item.modlist }}">
+      {% if item.source and item.source != "" %}
+      <a class="gallery-image-link" href="{{ item.source }}" target="_blank" rel="noopener noreferrer" aria-label="{{ item.title }} — by {{ item.author }} (opens the Discord post)">
+        <div class="gallery-image" style="background-image: url('{{ item.image | relative_url }}')"></div>
+      </a>
+      {% else %}
+      <div class="gallery-image" style="background-image: url('{{ item.image | relative_url }}')" role="img" aria-label="{{ item.title }} — by {{ item.author }}"></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if include.show_all and cg_items.size > cg_limit %}
+  <p class="gallery-more">
+    <a href="{{ '/gallery/' | relative_url }}" data-i18n-key="home.gallery_view_all">View the full gallery</a>
+  </p>
+  {% endif %}
+{% endif %}

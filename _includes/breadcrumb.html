@@ -1,0 +1,36 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    <li class="breadcrumb-item">
+      <a href="{{ '/' | relative_url }}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <span class="breadcrumb-label" data-i18n-key="nav.home">Home</span>
+      </a>
+    </li>
+
+    {% assign url_parts = page.url | split: '/' %}
+    {% assign current_path = '' %}
+
+    {% for part in url_parts %}
+      {% if part != '' and part != 'index.html' %}
+        {% assign current_path = current_path | append: '/' | append: part %}
+        {% assign is_last = forloop.last %}
+
+        <li class="breadcrumb-item{% if is_last %} breadcrumb-item--active{% endif %}">
+          <svg class="breadcrumb-separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6" stroke-width="2"/>
+          </svg>
+
+          {% if is_last %}
+            <span class="breadcrumb-label">{{ page.title | default: part | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</span>
+          {% else %}
+            <a href="{{ current_path | append: '/' | relative_url }}">
+              <span class="breadcrumb-label">{{ part | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</span>
+            </a>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</nav>

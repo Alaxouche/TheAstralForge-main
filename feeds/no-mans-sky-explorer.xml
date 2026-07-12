@@ -1,0 +1,5 @@
+---
+layout: null
+sitemap: false
+---
+{% include feeds/modlist_feed.xml id="no-mans-sky-explorer" %}

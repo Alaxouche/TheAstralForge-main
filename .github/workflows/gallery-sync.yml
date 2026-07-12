@@ -1,0 +1,39 @@
+name: Sync Discord gallery
+
+# Pulls new screenshots from the Discord gallery channels into
+# _data/community_gallery.yml. Requires one repository secret:
+#   DISCORD_BOT_TOKEN   bot token (Read Message History on the channels)
+# The channel → modlist mapping lives in scripts/sync-discord-gallery.mjs,
+# which also documents the one-time bot setup.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # every Monday 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Sync gallery from Discord
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        run: node scripts/sync-discord-gallery.mjs
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/community_gallery.yml assets/Images/community/
+          git diff --cached --quiet && echo "No changes." && exit 0
+          git commit -m "chore: sync community gallery from Discord"
+          git push

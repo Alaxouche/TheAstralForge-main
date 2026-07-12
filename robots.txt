@@ -1,0 +1,9 @@
+---
+# Served at /robots.txt — front matter makes Jekyll process the Liquid below.
+layout: null
+sitemap: false
+---
+User-agent: *
+Allow: /
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

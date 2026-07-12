@@ -1,0 +1,31 @@
+# Cache Headers for Netlify
+# https://docs.netlify.com/routing/headers/
+
+# Static assets - cache for 1 year
+/assets/Images/*
+  Cache-Control: public, max-age=31536000, immutable
+  
+/assets/logos/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/skyground/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/skyground/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages - cache for 5 minutes
+/*
+  Cache-Control: public, max-age=300, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Fonts - cache for 1 year
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  
+# Data files
+/_data/*
+  Cache-Control: no-cache, must-revalidate

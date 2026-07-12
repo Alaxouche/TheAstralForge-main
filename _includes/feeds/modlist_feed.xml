@@ -1,0 +1,16 @@
+{%- assign m = site.data.modlist_snapshot | where: "id", include.id | first -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ m.title | xml_escape }} — Releases</title>
+  <link href="{{ '/feeds/' | append: include.id | append: '.xml' | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ '/' | append: include.id | append: '/' | absolute_url }}"/>
+  <id>{{ '/feeds/' | append: include.id | append: '.xml' | absolute_url }}</id>
+  <updated>{{ m.dateUpdated }}</updated>
+  <entry>
+    <title>{{ m.title | xml_escape }} {{ m.version }}</title>
+    <id>tag:theastralforge.com,2026:{{ m.id }}:{{ m.version }}</id>
+    <updated>{{ m.dateUpdated }}</updated>
+    <link href="{{ '/' | append: m.id | append: '/' | absolute_url }}"/>
+    <summary>{{ m.title | xml_escape }} updated to version {{ m.version }}.</summary>
+  </entry>
+</feed>

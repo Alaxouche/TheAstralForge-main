@@ -1,0 +1,57 @@
+{% comment %}
+  install_stepper.html
+  Progress bar + step pills for installation guide pages.
+{% endcomment %}
+
+{% if page.parent == "Installation Guide" %}
+  {% assign steps = site[page.collection] | where: "parent", "Installation Guide" | sort: "nav_order" %}
+  {% assign total_steps = steps | size %}
+  {% assign current_step = 0 %}
+
+  {% for step in steps %}
+    {% if step.url == page.url %}{% assign current_step = forloop.index %}{% endif %}
+  {% endfor %}
+
+  {% assign collection_pages = site[page.collection] %}
+  {% for p in collection_pages %}
+    {% if p.url contains '/installation-guide/' and p.has_children %}
+      {% assign guide_index = p %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="install-progress" aria-label="Installation progress">
+    <div class="install-progress__header">
+      <a href="{{ guide_index.url | default: '../' | relative_url }}" class="install-progress__back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        <span data-i18n-key="nav.install">Installation Guide</span>
+      </a>
+      <span class="install-progress__count">
+        <span data-i18n-key="readme.step">Step</span>
+        {{ current_step }}
+        <span data-i18n-key="readme.of">of</span>
+        {{ total_steps }}
+      </span>
+    </div>
+
+    <div class="install-progress__bar-wrap" role="progressbar" aria-valuenow="{{ current_step }}" aria-valuemin="1" aria-valuemax="{{ total_steps }}">
+      <div class="install-progress__bar" style="width: {{ current_step | times: 100 | divided_by: total_steps }}%"></div>
+    </div>
+
+    <ol class="install-progress__steps">
+      {% for step in steps %}
+        {% assign step_state = "" %}
+        {% if forloop.index < current_step %}{% assign step_state = "done" %}
+        {% elsif forloop.index == current_step %}{% assign step_state = "current" %}
+        {% endif %}
+        <li class="install-progress__step install-progress__step--{{ step_state }}" title="{{ step.title }}">
+          <a href="{{ step.url | relative_url }}" {% if forloop.index == current_step %}aria-current="step"{% endif %}>
+            <span class="install-progress__dot">{{ forloop.index }}</span>
+            <span class="install-progress__label">{{ step.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endif %}

@@ -1,0 +1,45 @@
+{% comment %}
+  install_prevnext.html
+  Previous / Next page navigation for installation guide child pages.
+{% endcomment %}
+
+{% if page.parent == "Installation Guide" %}
+  {% assign steps = site[page.collection] | where: "parent", "Installation Guide" | sort: "nav_order" %}
+  {% assign total_steps = steps | size %}
+  {% assign prev_page = nil %}
+  {% assign next_page = nil %}
+
+  {% for step in steps %}
+    {% if step.url == page.url %}
+      {% assign prev_index = forloop.index0 | minus: 1 %}
+      {% assign next_index = forloop.index0 | plus: 1 %}
+      {% if prev_index >= 0 %}{% assign prev_page = steps[prev_index] %}{% endif %}
+      {% if next_index < total_steps %}{% assign next_page = steps[next_index] %}{% endif %}
+    {% endif %}
+  {% endfor %}
+
+  <nav class="install-nav" aria-label="Installation guide navigation">
+    <div class="install-nav__prev">
+      {% if prev_page %}
+        <a href="{{ prev_page.url | relative_url }}" class="install-nav__btn install-nav__btn--prev">
+          <svg class="install-nav__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="install-nav__text">
+            <small data-i18n-key="readme.prev">Previous</small>
+            <span>{{ prev_page.title }}</span>
+          </span>
+        </a>
+      {% endif %}
+    </div>
+    <div class="install-nav__next">
+      {% if next_page %}
+        <a href="{{ next_page.url | relative_url }}" class="install-nav__btn install-nav__btn--next">
+          <span class="install-nav__text">
+            <small data-i18n-key="readme.next">Next</small>
+            <span>{{ next_page.title }}</span>
+          </span>
+          <svg class="install-nav__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      {% endif %}
+    </div>
+  </nav>
+{% endif %}

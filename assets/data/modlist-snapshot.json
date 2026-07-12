@@ -1,0 +1,7 @@
+---
+# Generated from _data/modlist_snapshot.json (single source of truth).
+# Served at /assets/data/modlist-snapshot.json for the client-side stats system.
+layout: null
+sitemap: false
+---
+{{ site.data.modlist_snapshot | jsonify }}

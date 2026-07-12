@@ -1,0 +1,104 @@
+title: The Astral Forge
+description: Documentation for The Astral Forge modlists
+theme: just-the-docs
+color_scheme: dark
+logo: "/assets/logos/theastralforge.png"
+favicon_ico: "/assets/logos/theastralforge.ico"
+image: "/assets/logos/theastralforge.png"
+
+url: "https://theastralforge.com"
+baseurl: ""
+assets_version: "20260711-2"
+
+exclude:
+  - .venv/
+  - .github/
+  - _site/
+  - temp_*.txt
+
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+search:
+  heading_level: 4
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: true
+  
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Back to top"
+footer_content: "Copyright © 2026 The Astral Forge"
+
+# Footer last edited timestamp
+last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
+last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
+
+aux_links:
+  "Discord":
+    - "https://discord.gg/vKuB7nazBk"
+  "Nexus":
+    - "https://www.nexusmods.com/skyrimspecialedition/mods/89632"
+  "Wabbajack":
+    - "https://www.wabbajack.org"
+
+
+callouts_level: loud
+callouts:
+  highlight: { color: yellow }
+  important: { title: Important, color: blue }
+  new:       { title: New,       color: green }
+  tip:       { title: Tip,       color: green }
+  note:      { title: Note,      color: purple }
+  information: { title: Information, color: yellow }
+  warning:   { title: Warning,   color: red }
+
+collections:
+  wunduniik:        { permalink: "/:collection/:path/", output: true }
+  krentoraan:       { permalink: "/:collection/:path/", output: true }
+  ghost-of-the-grid: { permalink: "/:collection/:path/", output: true }
+  no-mans-sky-explorer: { permalink: "/:collection/:path/", output: true }
+  extrasolar-containment-protocol: { permalink: "/:collection/:path/", output: true }
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: skyground_readme
+  - scope:
+      type: "wunduniik"
+    values:
+      layout: skyground_readme
+  - scope:
+      type: "krentoraan"
+    values:
+      layout: skyground_readme
+  - scope:
+      type: "ghost-of-the-grid"
+    values:
+      layout: skyground_readme
+  - scope:
+      type: "no-mans-sky-explorer"
+    values:
+      layout: skyground_readme
+  - scope:
+      type: "extrasolar-containment-protocol"
+    values:
+      layout: skyground_readme
+
+just_the_docs:
+  collections:
+    wunduniik:        { name: Wunduniik,        nav_fold: true }
+    krentoraan:       { name: Krentoraan,       nav_fold: true }
+    ghost-of-the-grid: { name: Ghost of the Grid, nav_fold: true }
+    no-mans-sky-explorer: { name: No Mans Sky Explorer, nav_fold: true }
+    extrasolar-containment-protocol: { name: Extrasolar Containment Protocol, nav_fold: true }

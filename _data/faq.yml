@@ -1,0 +1,28 @@
+- id: install-speed
+  question: "Why does Wabbajack take so long?"
+  answer: "Downloads are large and depend on Nexus/hosting speed. Install on SSD, avoid peak hours, and keep enough free disk space."
+  tags:
+    - Installation
+    - Wabbajack
+- id: crashes-intro
+  question: "I crash during the intro, is it normal?"
+  answer: "Some lists can be unstable during the scripted intro. Try again after the intro sequence or restart the game once."
+  tags:
+    - Stability
+    - Troubleshooting
+- id: loadorder
+  question: "Where can I find the load order?"
+  answer: "Each project has a Load Order page in its quick links. You can also use the search bar to find it quickly."
+  tags:
+    - Documentation
+- id: reporting-bugs
+  question: "How should I report a bug?"
+  answer: "Use the Discord support channel and include logs, steps to reproduce, and your system specs."
+  tags:
+    - Support
+- id: update-frequency
+  question: "How often are modlists updated?"
+  answer: "Updates are posted in each changelog. Frequency depends on game patches and mod updates."
+  tags:
+    - Changelog
+

@@ -1,0 +1,227 @@
+# Community gallery shown on the homepage.
+#
+# Two ways to add entries:
+#   1. By hand — copy a block below.
+#   2. From Discord — run scripts/sync-discord-gallery.mjs (see the header
+#      of that file), which appends new screenshots posted in the gallery
+#      channels. The gallery-sync GitHub workflow can do this on a schedule.
+#
+# Fields:
+#   title    short caption
+#   author   Discord display name of whoever posted it
+#   modlist  wunduniik | krentoraan | ghost-of-the-grid |
+#            no-mans-sky-explorer | extrasolar-containment-protocol
+#   image    path under /assets/ (synced files land in /assets/Images/community/)
+#   date     YYYY-MM-DD
+#   source   link to the original Discord message (optional)
+
+items:
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-0.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-1.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-2.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-3.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-4.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-5.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-6.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1484168121374867629-7.webp
+    date: 2026-03-19
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1484168121374867629"
+
+  - title: "Screenshot by poo butt"
+    author: "poo butt"
+    modlist: wunduniik
+    image: /assets/Images/community/1452436280850776097-0.webp
+    date: 2025-12-21
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1452436280850776097"
+
+  - title: "Screenshot by poo butt"
+    author: "poo butt"
+    modlist: wunduniik
+    image: /assets/Images/community/1452436280850776097-1.webp
+    date: 2025-12-21
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1452436280850776097"
+
+  - title: "Screenshot by Neishin"
+    author: "Neishin"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1447188878439223338.webp
+    date: 2025-12-07
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1447188878439223338"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1447166696505868299.webp
+    date: 2025-12-07
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1447166696505868299"
+
+  - title: "111 views so it's time to continue. Displayed is an alternat"
+    author: "The Sage Of Time"
+    modlist: wunduniik
+    image: /assets/Images/community/1446295781639454741.webp
+    date: 2025-12-05
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1446295781639454741"
+
+  - title: "Here <t:1764896401:R> : Skyrim Wunduniik As A Nord Ep 1 #gam"
+    author: "The Sage Of Time"
+    modlist: wunduniik
+    image: /assets/Images/community/1446295420027273348.webp
+    date: 2025-12-05
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1446295420027273348"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324505651220560-0.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324505651220560"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324505651220560-1.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324505651220560"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324505651220560-2.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324505651220560"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324505651220560-3.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324505651220560"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324494209159189.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324494209159189"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324431739326627.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324431739326627"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/community/1445324395378774076.webp
+    date: 2025-12-02
+    source: "https://discord.com/channels/750268919201398805/1371441554128109688/1445324395378774076"
+
+  - title: "Screenshot by Razoreanna"
+    author: "Razoreanna"
+    modlist: wunduniik
+    image: /assets/Images/community/1444794444795871243.webp
+    date: 2025-11-30
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1444794444795871243"
+
+  - title: "I see you again old friend"
+    author: "Razoreanna"
+    modlist: wunduniik
+    image: /assets/Images/community/1444093659296432240.webp
+    date: 2025-11-28
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1444093659296432240"
+
+  - title: "Screenshot by Ale-Axe-Ouche"
+    author: "Ale-Axe-Ouche"
+    modlist: wunduniik
+    image: /assets/Images/community/1441928834613117110.webp
+    date: 2025-11-22
+    source: "https://discord.com/channels/750268919201398805/1404560105726410853/1441928834613117110"
+
+  - title: "Dragon hunt at dusk"
+    author: "Alaxouche"
+    modlist: wunduniik
+    image: /assets/Images/Skyrim/enb_2026-2-28_18-36-11_274.webp
+    date: 2026-02-28
+    source: ""
+
+  - title: "Northern lights over the tundra"
+    author: "Alaxouche"
+    modlist: wunduniik
+    image: /assets/Images/Skyrim/enb_2026-1-30_10-36-32_139.webp
+    date: 2026-01-30
+    source: ""
+
+  - title: "Winter ridge"
+    author: "Alaxouche"
+    modlist: krentoraan
+    image: /assets/Images/Skyrim/enb_2026-2-28_18-36-25_572.webp
+    date: 2026-02-28
+    source: ""
+
+  - title: "Old ruins"
+    author: "Alaxouche"
+    modlist: krentoraan
+    image: /assets/Images/Skyrim/enb2025_12_6_14_19_46.webp
+    date: 2025-12-06
+    source: ""
+
+  - title: "Night City in the rain"
+    author: "Alaxouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/Cyberpunk/photomode_22022026_172726.webp
+    date: 2026-02-22
+    source: ""
+
+  - title: "Neon streets"
+    author: "Alaxouche"
+    modlist: ghost-of-the-grid
+    image: /assets/Images/Cyberpunk/photomode_06122025_154631.webp
+    date: 2025-12-06
+    source: ""

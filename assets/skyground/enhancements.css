@@ -1,0 +1,659 @@
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumb-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--primary-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.breadcrumb-item--active {
+  color: #fff;
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+/* ===== PROGRESS BAR ===== */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.reading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), #16a34a);
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+body.has-alert .reading-progress {
+  top: 44px;
+}
+
+header.has-alert + .reading-progress {
+  top: 124px;
+}
+
+/* ===== COPY LINK BUTTONS ===== */
+.heading-anchor {
+  position: relative;
+  scroll-margin-top: 120px;
+}
+
+.copy-link-btn {
+  opacity: 0;
+  position: absolute;
+  left: -1.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heading-anchor:hover .copy-link-btn {
+  opacity: 1;
+}
+
+.copy-link-btn:hover {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: var(--primary-color);
+  color: var(--primary-text);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.copy-link-btn.copied {
+  background: var(--primary-color);
+  color: #000;
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  min-width: 280px;
+  padding: 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+  font-size: 0.875rem;
+  pointer-events: all;
+  animation: toastSlideIn 0.3s ease;
+  transform-origin: bottom right;
+}
+
+.toast.toast--success {
+  border-color: var(--primary-color);
+}
+
+.toast.toast--error {
+  border-color: #ef4444;
+}
+
+.toast.toast--info {
+  border-color: #3b82f6;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+}
+
+.toast-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.toast.toast--success .toast-icon {
+  color: var(--primary-text);
+}
+
+.toast.toast--error .toast-icon {
+  color: #ef4444;
+}
+
+.toast.toast--info .toast-icon {
+  color: #3b82f6;
+}
+
+.toast-message {
+  flex: 1;
+}
+
+.toast.removing {
+  animation: toastSlideOut 0.3s ease forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes toastSlideOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%) scale(0.8);
+  }
+}
+
+/* ===== LOADING SPINNER ===== */
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.loading-spinner::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: var(--primary-color) transparent var(--primary-color) transparent;
+  animation: spinnerRotate 1.2s linear infinite;
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.loading-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@keyframes spinnerRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== UTILITY TRANSITIONS ===== */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-colors {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.transition-transform {
+  transition: transform 0.3s ease;
+}
+
+.transition-opacity {
+  transition: opacity 0.3s ease;
+}
+
+/* ===== ENHANCED HOVER STATES ===== */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(2deg) scale(1.02);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3), 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-color);
+}
+
+/* ===== ENHANCED SHADOWS ===== */
+.shadow-deep {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.shadow-glow {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 1px rgba(34, 197, 94, 0.2);
+}
+
+.border-glow {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), transparent, rgba(34, 197, 94, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+/* ===== LIGHT THEME ===== */
+html[data-theme="light"] .breadcrumb-item {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="light"] .breadcrumb-item a {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme="light"] .breadcrumb-item a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .breadcrumb-item--active {
+  color: #1b1b1b;
+}
+
+html[data-theme="light"] .toast {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1b1b1b;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .copy-link-btn {
+    opacity: 1;
+    position: static;
+    transform: none;
+    margin-left: 0.5rem;
+  }
+  
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  .toast {
+    min-width: auto;
+  }
+}
+
+/* ===== INSTALL PROGRESS (STEPPER + PREV/NEXT) ===== */
+.install-progress {
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.install-progress__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.install-progress__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--primary-text);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.install-progress__back:hover { opacity: 1; }
+
+.install-progress__count {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
+
+.install-progress__bar-wrap {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.install-progress__bar {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.install-progress__steps {
+  display: flex;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.install-progress__steps::-webkit-scrollbar { display: none; }
+
+.install-progress__step a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem 0.3rem 0.35rem;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color 0.2s, background 0.2s;
+}
+
+.install-progress__step a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.install-progress__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Done step */
+.install-progress__step--done a {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.install-progress__step--done .install-progress__dot {
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 0;
+}
+
+.install-progress__step--done .install-progress__dot::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+/* Current step */
+.install-progress__step--current a {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.install-progress__step--current .install-progress__dot {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+
+/* hide labels on small screens, keep dots */
+@media (max-width: 600px) {
+  .install-progress__label { display: none; }
+  .install-progress__step a { padding: 0.3rem; }
+}
+
+/* Light theme overrides */
+html[data-theme="light"] .install-progress {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="light"] .install-progress__back { color: var(--primary-text); }
+html[data-theme="light"] .install-progress__count { color: rgba(0, 0, 0, 0.45); }
+html[data-theme="light"] .install-progress__bar-wrap { background: rgba(0, 0, 0, 0.08); }
+
+html[data-theme="light"] .install-progress__step a {
+  color: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .install-progress__step a:hover {
+  color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="light"] .install-progress__dot {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="light"] .install-progress__step--current a {
+  color: #1a1a1a;
+}
+
+/* ===== PREV / NEXT NAV ===== */
+.install-nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="light"] .install-nav {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.install-nav__prev,
+.install-nav__next {
+  flex: 1;
+}
+
+.install-nav__next { text-align: right; }
+
+.install-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  max-width: 260px;
+}
+
+.install-nav__btn:hover {
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.install-nav__btn--next { margin-left: auto; }
+
+.install-nav__arrow {
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.install-nav__btn:hover .install-nav__arrow { opacity: 1; }
+
+.install-nav__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.install-nav__text small {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.45;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.install-nav__text > span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[data-theme="light"] .install-nav__btn {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme="light"] .install-nav__btn:hover {
+  border-color: var(--primary-color);
+  background: rgba(0, 0, 0, 0.06);
+  color: #1a1a1a;
+}
+
+html[data-theme="light"] .install-nav__text small { opacity: 0.35; }
+
+/* ===== CHANGELOG ANCHOR BUTTON ===== */
+.changelog-anchor {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+  vertical-align: middle;
+}
+
+details:hover .changelog-anchor,
+summary:focus-visible .changelog-anchor {
+  opacity: 1;
+}
+
+.changelog-anchor:hover {
+  color: var(--primary-text);
+  opacity: 1;
+}
+
+html[data-theme="light"] .changelog-anchor { color: rgba(0, 0, 0, 0.3); }
+html[data-theme="light"] .changelog-anchor:hover { color: var(--primary-text); }

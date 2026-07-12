@@ -1,0 +1,116 @@
+:root {
+  --cmp-bg: rgba(17, 17, 17, 0.92);
+  --cmp-border: rgba(255, 255, 255, 0.14);
+  --cmp-text: #ffffff;
+  --cmp-muted: rgba(255, 255, 255, 0.7);
+  --cmp-accent: var(--primary-color, #22c55e);
+}
+
+/* Gatekeeper consent banner and modal */
+#gk-cmp,
+#gk-cmp-wrapper,
+.gk-cmp,
+.gk-consent,
+.gk-consent-banner,
+.gk-cookie-banner,
+.gk-privacy-banner,
+.gk-consent-modal,
+.gk-cmp-modal,
+[id^="gk-"][class*="banner"],
+[id^="gk-"][class*="modal"],
+[class*="gatekeeper"] {
+  background: var(--cmp-bg) !important;
+  color: var(--cmp-text) !important;
+  border: 1px solid var(--cmp-border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+#gk-cmp *,
+.gk-cmp *,
+.gk-consent *,
+.gk-consent-banner *,
+.gk-cookie-banner *,
+.gk-privacy-banner *,
+[class*="gatekeeper"] * {
+  font-family: "Roboto", "Segoe UI", sans-serif !important;
+}
+
+/* Primary and secondary actions */
+#gk-cmp button,
+.gk-cmp button,
+.gk-consent button,
+.gk-consent-banner button,
+.gk-cookie-banner button,
+.gk-privacy-banner button,
+[class*="gatekeeper"] button {
+  border-radius: 10px !important;
+  padding: 10px 16px !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--cmp-border) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--cmp-text) !important;
+}
+
+#gk-cmp button[class*="accept"],
+#gk-cmp button[id*="accept"],
+.gk-cmp button[class*="accept"],
+.gk-consent button[class*="accept"],
+.gk-consent-banner button[class*="accept"],
+[class*="gatekeeper"] button[class*="accept"],
+[class*="gatekeeper"] button[id*="accept"],
+.gk-cmp button[class*="allow"],
+.gk-consent button[class*="allow"],
+[class*="gatekeeper"] button[class*="allow"],
+.gk-cmp button[class*="primary"],
+.gk-consent button[class*="primary"],
+[class*="gatekeeper"] button[class*="primary"] {
+  background: var(--cmp-accent) !important;
+  color: #0b0b0b !important;
+  border-color: transparent !important;
+}
+
+#gk-cmp button[class*="reject"],
+#gk-cmp button[class*="deny"],
+.gk-cmp button[class*="reject"],
+.gk-consent button[class*="reject"],
+.gk-consent-banner button[class*="reject"],
+[class*="gatekeeper"] button[class*="reject"],
+[class*="gatekeeper"] button[class*="deny"],
+.gk-cmp button[class*="secondary"],
+.gk-consent button[class*="secondary"],
+[class*="gatekeeper"] button[class*="secondary"],
+.gk-cmp button[class*="settings"],
+.gk-consent button[class*="settings"],
+[class*="gatekeeper"] button[class*="settings"] {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--cmp-text) !important;
+  border-color: var(--cmp-border) !important;
+}
+
+/* Floating privacy icon */
+#gk-consent-button,
+#gk-privacy-button,
+.gk-consent-button,
+.gk-privacy-button,
+.gk-floating-button,
+.gk-cmp-button,
+[class*="gatekeeper"][class*="button"] {
+  background: var(--cmp-bg) !important;
+  color: var(--cmp-text) !important;
+  border: 1px solid var(--cmp-border) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+#gk-consent-button:hover,
+#gk-privacy-button:hover,
+.gk-consent-button:hover,
+.gk-privacy-button:hover,
+.gk-floating-button:hover,
+.gk-cmp-button:hover,
+[class*="gatekeeper"][class*="button"]:hover {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}

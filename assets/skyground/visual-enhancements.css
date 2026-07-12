@@ -1,0 +1,1107 @@
+/* ================================================================
+   VISUAL ENHANCEMENTS — layered on top of main.css
+   Improvements: hero drama, typography, cards, carousel,
+   gallery, footer icons, accessibility, hub hover, other pages.
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap');
+
+/* -------- CUSTOM PROPERTY EXTENSIONS -------- */
+:root {
+  --glow-green: rgba(34, 197, 94, 0.35);
+  --glow-green-soft: rgba(34, 197, 94, 0.15);
+  --transition-snappy: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="light"] {
+  --glow-green: rgba(194, 65, 12, 0.3);
+  --glow-green-soft: rgba(194, 65, 12, 0.12);
+}
+
+/* ================================================================
+   HERO SECTION
+   ================================================================ */
+
+.hero h2 {
+  color: var(--primary-color);
+  letter-spacing: 0.45em;
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.hero h1 {
+  font-family: 'Cinzel', 'Roboto', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #ffffff 0%, #86efac 40%, #22c55e 70%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.25));
+}
+
+html[data-theme="light"] .hero h1 {
+  background: linear-gradient(135deg, #1b1b1b 0%, #ea580c 45%, #c2410c 70%, #1b1b1b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(194, 65, 12, 0.2));
+}
+
+html[data-theme="light"] .hero h2 {
+  color: var(--primary-color);
+}
+
+.hero p {
+  max-width: 640px;
+  line-height: 1.75;
+}
+
+/* CTA button — green glow */
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.22) 0%,
+    rgba(34, 197, 94, 0.10) 100%
+  );
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  color: #fff !important;
+  box-shadow: 0 0 18px var(--glow-green-soft), inset 0 0 12px rgba(34, 197, 94, 0.05);
+  transition:
+    background var(--transition-snappy),
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy),
+    transform var(--transition-snappy);
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.38) 0%,
+    rgba(34, 197, 94, 0.22) 100%
+  ) !important;
+  border-color: rgba(34, 197, 94, 0.7) !important;
+  box-shadow: 0 0 32px var(--glow-green), inset 0 0 16px rgba(34, 197, 94, 0.08) !important;
+  transform: translateY(-3px) !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .btn-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(194, 65, 12, 0.14) 0%,
+    rgba(194, 65, 12, 0.06) 100%
+  ) !important;
+  border-color: rgba(194, 65, 12, 0.4) !important;
+  color: #c2410c !important;
+  box-shadow: 0 0 14px rgba(194, 65, 12, 0.14) !important;
+}
+
+html[data-theme="light"] .btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(194, 65, 12, 0.28) 0%,
+    rgba(194, 65, 12, 0.14) 100%
+  ) !important;
+  border-color: rgba(194, 65, 12, 0.65) !important;
+  box-shadow: 0 0 28px rgba(194, 65, 12, 0.28) !important;
+  color: #9a3412 !important;
+}
+
+/* ================================================================
+   SECTION HEADINGS — green accent bar
+   ================================================================ */
+
+.creator-spotlight .section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 14px;
+}
+
+.creator-spotlight .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+}
+
+/* Community pulse header — left aligned */
+.community-pulse__header h2 {
+  position: relative;
+  padding-bottom: 14px;
+  display: inline-block;
+}
+
+.community-pulse__header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+}
+
+/* Gallery section heading — centered, so the bar is centered too */
+.gallery-section h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 14px;
+}
+
+.gallery-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--primary-color);
+}
+
+/* ================================================================
+   ABOUT SECTION
+   ================================================================ */
+
+.about {
+  background: rgba(14, 14, 14, 0.82) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="light"] .about {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-top-color: rgba(0, 0, 0, 0.07);
+  border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+/* Logo — accent ring + glow */
+.about img {
+  border: 2px solid rgba(34, 197, 94, 0.35) !important;
+  box-shadow:
+    0 0 28px rgba(34, 197, 94, 0.18),
+    0 20px 40px rgba(0, 0, 0, 0.55) !important;
+  transition: box-shadow var(--transition-snappy), transform var(--transition-snappy);
+}
+
+.about img:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 46px rgba(34, 197, 94, 0.3),
+    0 24px 48px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-theme="light"] .about img {
+  border-color: rgba(194, 65, 12, 0.35) !important;
+  box-shadow:
+    0 0 28px rgba(194, 65, 12, 0.15),
+    0 20px 40px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* ================================================================
+   CREATOR SPOTLIGHT
+   ================================================================ */
+
+.creator-card {
+  background: rgba(13, 13, 13, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition:
+    transform var(--transition-snappy),
+    box-shadow var(--transition-snappy),
+    border-color var(--transition-snappy) !important;
+}
+
+.creator-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 56px rgba(34, 197, 94, 0.18) !important;
+  border-color: rgba(34, 197, 94, 0.25) !important;
+}
+
+.creator-image-wrapper {
+  border: 2px solid rgba(34, 197, 94, 0.4) !important;
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.15) !important;
+  transition: box-shadow var(--transition-snappy) !important;
+}
+
+.creator-card:hover .creator-image-wrapper {
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.28) !important;
+}
+
+.creator-name {
+  font-family: 'Cinzel', 'Roboto', sans-serif !important;
+  letter-spacing: 0.04em;
+}
+
+html[data-theme="light"] .creator-card {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
+}
+
+html[data-theme="light"] .creator-card:hover {
+  box-shadow: 0 20px 56px rgba(194, 65, 12, 0.16) !important;
+  border-color: rgba(194, 65, 12, 0.25) !important;
+}
+
+html[data-theme="light"] .creator-name,
+html[data-theme="light"] .creator-bio,
+html[data-theme="light"] .creator-quote {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+html[data-theme="light"] .creator-image-wrapper {
+  border-color: rgba(194, 65, 12, 0.4) !important;
+  box-shadow: 0 0 24px rgba(194, 65, 12, 0.12) !important;
+}
+
+/* ================================================================
+   FEATURES SECTION
+   ================================================================ */
+
+.feature-text {
+  background: rgba(14, 14, 14, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  transition:
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy) !important;
+}
+
+.feature-text:hover {
+  border-color: rgba(34, 197, 94, 0.2) !important;
+  box-shadow: 0 12px 40px rgba(34, 197, 94, 0.08) !important;
+}
+
+html[data-theme="light"] .feature-text {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="light"] .feature-text:hover {
+  border-color: rgba(194, 65, 12, 0.2) !important;
+  box-shadow: 0 12px 40px rgba(194, 65, 12, 0.08) !important;
+}
+
+.feature-image {
+  transition: box-shadow var(--transition-snappy) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.feature-image:hover {
+  box-shadow:
+    0 0 28px rgba(34, 197, 94, 0.2),
+    0 24px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ================================================================
+   COMMUNITY PULSE CARDS
+   ================================================================ */
+
+.community-pulse__card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--transition-snappy),
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy) !important;
+}
+
+.community-pulse__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.community-pulse__card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(34, 197, 94, 0.3) !important;
+  box-shadow: 0 18px 42px rgba(34, 197, 94, 0.1) !important;
+}
+
+.community-pulse__card:hover::before {
+  transform: scaleX(1);
+}
+
+html[data-theme="light"] .community-pulse__card:hover {
+  border-color: rgba(194, 65, 12, 0.3) !important;
+  box-shadow: 0 18px 42px rgba(194, 65, 12, 0.1) !important;
+}
+
+/* Supporter items */
+.community-supporter-item {
+  transition:
+    transform var(--transition-snappy),
+    border-color var(--transition-snappy) !important;
+}
+
+.community-supporter-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+/* ================================================================
+   GALLERY CAROUSEL
+   ================================================================ */
+
+.carousel-dots .dot.active {
+  background: var(--primary-color) !important;
+  box-shadow: 0 0 8px var(--glow-green);
+}
+
+.carousel-dots .dot:hover {
+  background: rgba(34, 197, 94, 0.5) !important;
+}
+
+.carousel-btn {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  transition:
+    background var(--transition-snappy),
+    box-shadow var(--transition-snappy),
+    transform var(--transition-snappy) !important;
+}
+
+.carousel-btn:hover {
+  background: rgba(34, 197, 94, 0.22) !important;
+  box-shadow: 0 0 16px var(--glow-green) !important;
+  transform: translateY(-50%) scale(1.12) !important;
+}
+
+html[data-theme="light"] .carousel-btn {
+  border-color: rgba(194, 65, 12, 0.3) !important;
+}
+
+html[data-theme="light"] .carousel-btn:hover {
+  background: rgba(194, 65, 12, 0.12) !important;
+  box-shadow: 0 0 16px rgba(194, 65, 12, 0.25) !important;
+}
+
+/* ================================================================
+   GALLERY FILTER BUTTONS
+   ================================================================ */
+
+.gallery-filter-btn {
+  transition:
+    background var(--transition-snappy),
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy),
+    transform var(--transition-snappy) !important;
+}
+
+.gallery-filter-btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+.gallery-filter-btn.active {
+  box-shadow: 0 0 14px var(--glow-green) !important;
+}
+
+/* ================================================================
+   HUB PAGE — hover effects (was transition: none)
+   ================================================================ */
+
+.hub-card {
+  transition:
+    transform var(--transition-snappy),
+    box-shadow var(--transition-snappy) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hub-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 0 0 1px rgba(34, 197, 94, 0.3),
+    0 30px 70px rgba(0, 0, 0, 0.6) !important;
+}
+
+.hub-card:hover .hub-card-game {
+  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+html[data-theme="light"] .hub-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(194, 65, 12, 0.3),
+    0 30px 70px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ================================================================
+   README / WIKI PAGES — polish
+   ================================================================ */
+
+/* Sidebar nav active link indicator */
+.readme-nav a.active,
+.readme-nav a[aria-current="page"] {
+  color: var(--primary-text) !important;
+  padding-left: 12px;
+  border-left: 2px solid var(--primary-color);
+}
+
+/* README content links underline on hover */
+.readme-content a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Section headings accent */
+.readme-content h2 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 10px;
+}
+
+html[data-theme="light"] .readme-content h2 {
+  border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+/* Project banner stat value — use primary text */
+.project-stat__value {
+  color: var(--primary-text) !important;
+}
+
+/* ================================================================
+   CONTRIBUTORS PAGE — visual polish
+   ================================================================ */
+
+.contributors-card {
+  transition:
+    transform var(--transition-snappy),
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy) !important;
+}
+
+.contributors-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 197, 94, 0.25) !important;
+  box-shadow: 0 12px 32px rgba(34, 197, 94, 0.1) !important;
+}
+
+html[data-theme="light"] .contributors-card:hover {
+  border-color: rgba(194, 65, 12, 0.25) !important;
+  box-shadow: 0 12px 32px rgba(194, 65, 12, 0.1) !important;
+}
+
+.contributors-row:not(.contributors-row--header) {
+  transition:
+    background var(--transition-snappy),
+    border-color var(--transition-snappy) !important;
+}
+
+.contributors-row:not(.contributors-row--header):hover {
+  background: rgba(34, 197, 94, 0.04) !important;
+  border-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+html[data-theme="light"] .contributors-row:not(.contributors-row--header):hover {
+  background: rgba(194, 65, 12, 0.04) !important;
+  border-color: rgba(194, 65, 12, 0.15) !important;
+}
+
+/* ================================================================
+   FAQ PAGE — visual polish
+   ================================================================ */
+
+/* The faq-header inline color fix: #15803d fails WCAG on dark */
+.faq-header h1 {
+  color: var(--primary-text) !important;
+}
+
+/* FAQ search input — better contrast in dark mode */
+#faq-search {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+  transition:
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy);
+}
+
+#faq-search:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px var(--glow-green-soft) !important;
+  outline: none !important;
+}
+
+html[data-theme="light"] #faq-search:focus {
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.12) !important;
+}
+
+/* FAQ tags — fix the inline fallback color #15803d */
+.faq-answer [style*="15803d"] {
+  color: var(--primary-text) !important;
+}
+
+/* FAQ item hover border */
+.faq-item {
+  transition:
+    border-color var(--transition-snappy),
+    box-shadow var(--transition-snappy) !important;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.06) !important;
+}
+
+/* ================================================================
+   ACCESSIBILITY FIXES
+   ================================================================ */
+
+/* Breadcrumb — light theme contrast fix */
+html[data-theme="light"] .breadcrumb-item {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="light"] .breadcrumb-item a {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+html[data-theme="light"] .breadcrumb-item a:hover {
+  color: var(--primary-text);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="light"] .breadcrumb-item--active {
+  color: #1b1b1b;
+}
+
+html[data-theme="light"] .breadcrumb-separator {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* README nav — light theme: #ccc on white fails contrast */
+html[data-theme="light"] .readme-nav a {
+  color: #444 !important;
+}
+
+html[data-theme="light"] .readme-nav a:hover {
+  color: var(--primary-text) !important;
+}
+
+/* Community pulse header text — light theme contrast */
+html[data-theme="light"] .community-pulse__header p {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+html[data-theme="light"] .community-pulse__card p {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+/* FAQ answer text — light theme */
+html[data-theme="light"] .faq-answer p {
+  color: rgba(0, 0, 0, 0.72) !important;
+}
+
+/* Gallery subtitle */
+.gallery-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+html[data-theme="light"] .gallery-subtitle {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* ================================================================
+   FOOTER — full redesign + monochrome icons
+   ================================================================ */
+
+.site-footer {
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 28px 40px;
+}
+
+html[data-theme="light"] .site-footer {
+  background: rgba(245, 242, 238, 0.95);
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-text a {
+  color: var(--primary-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-snappy);
+}
+
+.footer-text a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html[data-theme="light"] .footer-text {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="light"] .footer-text a {
+  color: var(--primary-text);
+}
+
+html[data-theme="light"] .footer-text a:hover {
+  color: #1b1b1b;
+}
+
+/* Social icons wrapper */
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Individual icon links — monochrome */
+.footer-social-links .footer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  /* Monochrome: primary color */
+  color: var(--primary-color);
+  text-decoration: none;
+  transition:
+    background var(--transition-snappy),
+    border-color var(--transition-snappy),
+    color var(--transition-snappy),
+    transform var(--transition-snappy),
+    box-shadow var(--transition-snappy);
+}
+
+.footer-social-links .footer-link:hover {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.25);
+}
+
+/* Light theme — monochrome orange */
+html[data-theme="light"] .footer-social-links .footer-link {
+  color: var(--primary-color);
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+html[data-theme="light"] .footer-social-links .footer-link:hover {
+  background: rgba(194, 65, 12, 0.08);
+  border-color: rgba(194, 65, 12, 0.35);
+  color: var(--primary-text);
+  box-shadow: 0 6px 18px rgba(194, 65, 12, 0.18);
+}
+
+/* ================================================================
+   HEADER — LOGO & GENERAL
+   ================================================================ */
+
+.logo {
+  transition: filter var(--transition-snappy) !important;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.5)) !important;
+}
+
+html[data-theme="light"] .logo:hover {
+  filter: drop-shadow(0 0 10px rgba(194, 65, 12, 0.4)) !important;
+}
+
+/* ================================================================
+   BACK TO TOP
+   ================================================================ */
+
+#back-to-top {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.35) !important;
+  transition:
+    transform var(--transition-snappy),
+    box-shadow var(--transition-snappy),
+    opacity 0.3s ease,
+    visibility 0.3s ease !important;
+}
+
+#back-to-top:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.5) !important;
+}
+
+html[data-theme="light"] #back-to-top {
+  background: linear-gradient(135deg, #ea580c, #c2410c) !important;
+  box-shadow: 0 4px 16px rgba(194, 65, 12, 0.35) !important;
+}
+
+html[data-theme="light"] #back-to-top:hover {
+  box-shadow: 0 8px 28px rgba(194, 65, 12, 0.5) !important;
+}
+
+/* ================================================================
+   MEDIAGRID (gallery pages)
+   ================================================================ */
+
+.mediagrid div:hover::before {
+  background: rgba(34, 197, 94, 0.12) !important;
+}
+
+/* ================================================================
+   LANGUAGE SWITCHER (i18n)
+   ================================================================ */
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    background var(--transition-snappy),
+    border-color var(--transition-snappy);
+  white-space: nowrap;
+}
+
+.lang-toggle:hover {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.lang-toggle:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
+}
+
+html[data-theme="light"] .lang-toggle {
+  background: rgba(255, 255, 255, 0.75);
+  color: #1b1b1b;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme="light"] .lang-toggle:hover {
+  background: rgba(194, 65, 12, 0.08);
+  border-color: rgba(194, 65, 12, 0.35);
+  color: #c2410c;
+}
+
+.lang-toggle__flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-toggle__code {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Load Order Library embed */
+.lo-embed {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.lo-embed__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lo-embed__title { font-weight: 700; font-size: 0.9rem; }
+
+.lo-embed__actions { display: flex; gap: 8px; }
+
+.lo-embed__btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lo-embed__btn:hover { background: rgba(255, 255, 255, 0.12); }
+
+.lo-embed__frame { display: block; width: 100%; border: 0; }
+
+/* CSS fallback when the Fullscreen API is unavailable */
+.lo-embed--maximized {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  margin: 0;
+  border-radius: 0;
+}
+
+.lo-embed--maximized .lo-embed__frame { height: calc(100vh - 41px); }
+
+/* Install step "mark complete" control */
+.install-checklist {
+  margin: 2.5rem 0 0.5rem;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.install-checklist__toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.install-checklist__checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #22c55e;
+  cursor: pointer;
+}
+
+.install-checklist--done {
+  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+/* "New version available" banner */
+.version-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 1.5rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.1);
+  font-weight: 600;
+}
+
+.version-banner__text { flex: 1; }
+
+.version-banner__cta {
+  font-weight: 700;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.version-banner__close {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.7;
+}
+
+.version-banner__close:hover { opacity: 1; }
+
+/* Per-modlist screenshot gallery */
+.modlist-gallery {
+  margin: 3rem 0 1rem;
+}
+
+.modlist-gallery__title {
+  margin: 0 0 0.25rem;
+}
+
+.modlist-gallery__subtitle {
+  margin: 0 0 1.25rem;
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.modlist-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.modlist-gallery__item {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modlist-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.modlist-gallery__item img:hover {
+  transform: scale(1.04);
+}
+
+/* "Live data" badge — revealed once stats-system.js loads real snapshot data */
+.project-banner__live {
+  display: none;
+  align-items: center;
+  gap: 7px;
+  margin: 12px 0 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--banner-accent, #22c55e);
+}
+
+.project-banner__live::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--banner-accent, #22c55e);
+  animation: taf-live-pulse 2s ease-in-out infinite;
+}
+
+.project-banner__stats[data-stats-state="success"] ~ .project-banner__live {
+  display: inline-flex;
+}
+
+@keyframes taf-live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Language dropdown */
+.lang-switch {
+  position: relative;
+  display: inline-flex;
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  min-width: 140px;
+  border-radius: 10px;
+  background: var(--sg-surface, #14161c);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.lang-menu[hidden] { display: none; }
+
+.lang-menu__item {
+  padding: 8px 12px;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.lang-menu__item:hover,
+.lang-menu__item:focus {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-menu__item[aria-selected="true"] {
+  background: var(--banner-accent, #22c55e);
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+html[data-theme="light"] .lang-menu {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ================================================================
+   BILINGUAL CONTENT SWITCHING
+   Hide FR content by default; show when html[lang="fr"] is set.
+   ================================================================ */
+
+html:not([lang="fr"]) [lang="fr"] { display: none !important; }
+html[lang="fr"] [lang="en"] { display: none !important; }
+
+/* ================================================================
+   REDUCED MOTION
+   Honour prefers-reduced-motion: neutralise parallax, fades and
+   long transitions for users who opt out of animation.
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-bg-layer {
+    transform: none !important;
+  }
+
+  .hero-content-wrapper {
+    opacity: 1 !important;
+  }
+}

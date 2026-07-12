@@ -1,0 +1,52 @@
+---
+layout: null
+---
+{%- capture nl %}
+{% endcapture -%}
+{%- assign sep = false -%}
+[
+{%- for doc in site.documents -%}
+  {%- if doc.title -%}
+    {%- if sep %},{% endif -%}{%- assign sep = true -%}
+    {"title": {{ doc.title | jsonify }},
+     "url": {{ doc.url | relative_url | jsonify }},
+     "category": {{ doc.collection | replace: "-", " " | capitalize | jsonify }},
+     "headings": [
+      {%- assign hsep = false -%}
+      {%- assign lines = doc.content | split: nl -%}
+      {%- for line in lines -%}
+        {%- assign l3 = line | slice: 0, 3 -%}
+        {%- assign l4 = line | slice: 0, 4 -%}
+        {%- assign heading = "" -%}
+        {%- if l3 == "## " -%}
+          {%- assign heading = line | remove_first: "## " -%}
+        {%- elsif l4 == "### " -%}
+          {%- assign heading = line | remove_first: "### " -%}
+        {%- elsif line contains "</h2>" or line contains "</h3>" -%}
+          {%- assign heading = line | strip_html -%}
+        {%- endif -%}
+        {%- assign heading = heading | split: " {#" | first | strip -%}
+        {%- if heading != "" -%}
+          {%- if hsep %},{% endif -%}{%- assign hsep = true -%}
+          {{ heading | jsonify }}
+        {%- endif -%}
+      {%- endfor -%}
+    ]}
+  {%- endif -%}
+{%- endfor -%}
+{%- for p in site.pages -%}
+  {%- if p.title and p.url != "/404.html" -%}
+    {%- assign is_page = true -%}
+    {%- if p.url contains "/assets/" or p.url contains ".xml" or p.url contains ".json" or p.url contains ".txt" -%}
+      {%- assign is_page = false -%}
+    {%- endif -%}
+    {%- if is_page -%}
+      {%- if sep %},{% endif -%}{%- assign sep = true -%}
+      {"title": {{ p.title | jsonify }},
+       "url": {{ p.url | relative_url | jsonify }},
+       "category": "Page",
+       "headings": []}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+]
